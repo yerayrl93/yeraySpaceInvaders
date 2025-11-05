@@ -20,7 +20,7 @@ public class escudo : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // El parámetro 'collision' ahora es el Collider2D del objeto que choca
-        Debug.Log("Escudo chocado con: " + collision.gameObject.name + " Tag: " + collision.gameObject.tag);
+       // Debug.Log("Escudo chocado con: " + collision.gameObject.name + " Tag: " + collision.gameObject.tag);
 
         // El escudo debe colisionar con las balas del enemigo Y del jugador
         if (collision.gameObject.CompareTag("BalaEnemiga") ||

@@ -39,5 +39,11 @@ public class controlarBala : MonoBehaviour
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
+        if(collision.CompareTag("Enemigo"))
+        {
+            controlJuego.Instancia.SumarPuntos(10);
+            Destroy (collision.gameObject);
+            Destroy (gameObject);   
+        }
     }
 }
