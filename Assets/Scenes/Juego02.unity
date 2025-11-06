@@ -1315,7 +1315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3184175061214824879, guid: 551c7a648b91359458d03c84e33b27b8, type: 3}
       propertyPath: tiempoDisparo
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4077677741272890074, guid: 551c7a648b91359458d03c84e33b27b8, type: 3}
       propertyPath: m_Name
