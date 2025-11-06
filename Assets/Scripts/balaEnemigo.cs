@@ -15,7 +15,7 @@ public class balaEnemigo : MonoBehaviour
     }
     private void Awake()
     {
-        Invoke("AutoDestruccion", tiempoBala);
+        Destroy(gameObject, tiempoBala);
 
     }
 

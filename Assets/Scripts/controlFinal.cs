@@ -37,11 +37,6 @@ public class ControladorFinal : MonoBehaviour
         int segundos = Mathf.FloorToInt(tiempo % 60F);
 
         textoTiempoFinal.text = string.Format("{0:00}:{1:00}", minutos, segundos);
-
-        // Opcional: limpiar PlayerPrefs si ya no se necesitan para evitar contaminación
-        // PlayerPrefs.DeleteKey("CondicionFinal");
-        // PlayerPrefs.DeleteKey("PuntuacionFinal");
-        // PlayerPrefs.Save(); 
     }
     public void JugarDeNuevo()
     {

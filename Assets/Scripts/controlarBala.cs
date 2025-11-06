@@ -7,7 +7,6 @@ public class controlarBala : MonoBehaviour
     private float velocidad = 15f;
     [SerializeField]
     private float tiempoVida = 3f;
-    private controlEnemigo enemigoManager;
 
     public void AutoDestruccion()
     {
@@ -16,34 +15,20 @@ public class controlarBala : MonoBehaviour
     }
     private void Awake()
     {
-        Invoke("AutoDestruccion", tiempoVida);
-
+        Destroy(gameObject, tiempoVida);
     }
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         transform.Translate(velocidad * Time.deltaTime * Vector2.up);   
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Enemigo"))
+        if (collision.CompareTag("Enemigo"))
         {
-            if (enemigoManager != null)
-            {
-                enemigoManager.EnemigoDestruido(collision.transform);
-            }
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-        }
-        if(collision.CompareTag("Enemigo"))
-        {
+            // Solo destruye la bala.
+            // El enemigo (vidaEnemigo.cs) manejará su animación y destrucción.
             controlJuego.Instancia.SumarPuntos(10);
-            Destroy (collision.gameObject);
-            Destroy (gameObject);   
+            Destroy(gameObject);
         }
     }
 }

@@ -8,7 +8,9 @@ public class controlEnemigo : MonoBehaviour
     public struct tipoEnemigo
     {
         public string nombre;
-        public Sprite[] imagen;
+        public Sprite spriteMovimiento1;
+        public Sprite spriteMovimiento2;
+        public Sprite spriteDestruccion;
         public int puntos;
         public int filas;
     }
@@ -30,17 +32,14 @@ public class controlEnemigo : MonoBehaviour
     [SerializeField] private GameObject prefabBalaEnemigo;
     [SerializeField] private float tiempoEntreDisparos = 1.0f; // Frecuencia de disparo
     private float temporizadorDisparo;
+   
 
     private Transform[,] posEnemigos;
     private int filas;
     private bool semueveAlaDerecha = true;
     private float maxX;
     private float posicionActualX;
-    private float incrementoY;
-    private float incrementoX;
 
-
-    //la magia dela invocacion
     void Start()
     {
         minX = puntoDeInvocacion.position.x;
@@ -71,16 +70,18 @@ public class controlEnemigo : MonoBehaviour
                     enemigo.transform.position = posicionActual;
                     enemigo.transform.localScale = new Vector3(2f, 2f, 0f);
                     enemigo.transform.SetParent(escuadron.transform);
-                    // Dentro del loop de invocación en controlEnemigo.cs:
-                    // ...
-                    enemigo.transform.SetParent(escuadron.transform);
+ 
                     // Añadir el script de vida al enemigo
-                    enemigo.AddComponent<vidaEnemigo>(); // <--- ¡Añadir esta línea!
-                                                         // ...
+                    enemigo.AddComponent<vidaEnemigo>();
                     SpriteRenderer imagen = enemigo.AddComponent<SpriteRenderer>();
-                    imagen.sprite = tipoEnemigo.imagen[y % tipoEnemigo.imagen.Length];
-                    imagen.sortingLayerName = "Default";
+                    imagen.sprite = tipoEnemigo.spriteMovimiento1;
                     imagen.sortingOrder = 10;
+
+                    animacion anim = enemigo.AddComponent<animacion>();
+                    anim.sprite1 = tipoEnemigo.spriteMovimiento1;
+                    anim.sprite2 = tipoEnemigo.spriteMovimiento2;
+                    anim.spriteDestruccion = tipoEnemigo.spriteDestruccion;
+
                     enemigo.tag = "Enemigo";
                     posEnemigos[filasTotales, y] = enemigo.transform;
                     posicionActual.x += xEspacio;

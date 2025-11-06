@@ -1821,3 +1821,32 @@ Received Import Request.
 Start importing Assets/Sprites 2/Invaders/space__0003_B2.png using Guid(34455bcb3bcedd1488807ef6889e647f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e2ddb331b677181134cd75d4e3b2e074') in 0.0072809 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
 
+========================================================================
+Received Import Request.
+  Time since last request: 1385.593767 seconds.
+  path: Assets/Sprites 2/Explosions/invaderExplosion.png
+  artifactKey: Guid(a3c7c89fbf85f05459bebe1675ade436) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites 2/Explosions/invaderExplosion.png using Guid(a3c7c89fbf85f05459bebe1675ade436) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd1d8cc9ef60421b20ff7e033c424f7b0') in 0.0160092 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Sprites 2/Explosions/playerExplosionB.png
+  artifactKey: Guid(8446d5bdff4b93345a869be0a6baadde) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites 2/Explosions/playerExplosionB.png using Guid(8446d5bdff4b93345a869be0a6baadde) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e525da16fff2a05896dcdd474fcfddce') in 0.0124073 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Sprites 2/Explosions/ufoExplosion.png
+  artifactKey: Guid(c631d698f4bc6b1459156693f9c95223) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites 2/Explosions/ufoExplosion.png using Guid(c631d698f4bc6b1459156693f9c95223) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'bc0be0641b18878931daf8a37b13825f') in 0.0111282 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

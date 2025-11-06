@@ -1,8 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class vidaEnemigo : MonoBehaviour
 {
     private controlEnemigo controladorFlota;
+    private bool destruido = false;
 
     void Start()
     {
@@ -13,20 +14,31 @@ public class vidaEnemigo : MonoBehaviour
     // Se llama cuando algo entra en el Trigger (BoxCollider2D) de este enemigo
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // 2. Comprobar si fue una bala del jugador
-        if (other.CompareTag("BalaJugador")) // Asegúrate de que tu bala del jugador tiene este Tag
-        {
-            Destroy(other.gameObject); // Destruye la bala del jugador
+        if (destruido) return;
 
-            // 3. Notificar al controlador de flota que este enemigo ha muerto
+        if (other.CompareTag("BalaJugador"))
+        {
+            destruido = true;
+            Destroy(other.gameObject);
+
+            var anim = GetComponent<animacion>();
+            if (anim != null)
+            {
+                anim.MostrarDestruccion();
+            }
+
             if (controladorFlota != null)
             {
                 controladorFlota.EnemigoDestruido(transform);
-                // Esto también llama a controlJuego.EnemigoDestruido()
             }
 
-            // 4. Destruir este enemigo
-            Destroy(gameObject);
+            // ðŸ•’ Esperar para que el sprite se vea
+            StartCoroutine(DestruirDespuesDe(0.3f));
         }
+    }
+    private System.Collections.IEnumerator DestruirDespuesDe(float tiempo)
+    {
+        yield return new WaitForSeconds(tiempo);
+        Destroy(gameObject);
     }
 }

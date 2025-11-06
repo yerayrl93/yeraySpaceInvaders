@@ -699,33 +699,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::controlEnemigo
   enemigos:
   - nombre: Enemigo1
-    imagen:
-    - {fileID: -6643140824280251454, guid: 21536bf4412eab5408c00685de302233, type: 3}
+    spriteMovimiento1: {fileID: 3201418120506485187, guid: ac87f5690d91499459bbb770934c8796, type: 3}
+    spriteMovimiento2: {fileID: -8810142488088881233, guid: ebf2577a995eaad45bd2e0e0d20af356, type: 3}
+    spriteDestruccion: {fileID: 21300000, guid: a3c7c89fbf85f05459bebe1675ade436, type: 3}
     puntos: 1
     filas: 1
   - nombre: Enemigo2
-    imagen:
-    - {fileID: 3070248830026191956, guid: 4689e04e6d131854eb3641ae9a7009da, type: 3}
+    spriteMovimiento1: {fileID: 279447929531759701, guid: 251a88cb2b9cf1c43b2881d01eceac2a, type: 3}
+    spriteMovimiento2: {fileID: 3070248830026191956, guid: 4689e04e6d131854eb3641ae9a7009da, type: 3}
+    spriteDestruccion: {fileID: 21300000, guid: a3c7c89fbf85f05459bebe1675ade436, type: 3}
     puntos: 1
     filas: 1
   - nombre: Enemigo3
-    imagen:
-    - {fileID: 3070248830026191956, guid: 4689e04e6d131854eb3641ae9a7009da, type: 3}
+    spriteMovimiento1: {fileID: 279447929531759701, guid: 251a88cb2b9cf1c43b2881d01eceac2a, type: 3}
+    spriteMovimiento2: {fileID: 3070248830026191956, guid: 4689e04e6d131854eb3641ae9a7009da, type: 3}
+    spriteDestruccion: {fileID: 21300000, guid: a3c7c89fbf85f05459bebe1675ade436, type: 3}
     puntos: 1
     filas: 1
   - nombre: Enemigo4
-    imagen:
-    - {fileID: -6724339726154270640, guid: 3847d8295f278624abb502ef2c22dfdc, type: 3}
+    spriteMovimiento1: {fileID: -6643140824280251454, guid: 21536bf4412eab5408c00685de302233, type: 3}
+    spriteMovimiento2: {fileID: -6724339726154270640, guid: 3847d8295f278624abb502ef2c22dfdc, type: 3}
+    spriteDestruccion: {fileID: 21300000, guid: a3c7c89fbf85f05459bebe1675ade436, type: 3}
     puntos: 1
     filas: 1
   columnasTotales: 10
-  xEspacio: 0.6
-  yEspacio: 0.55
+  xEspacio: 0.8
+  yEspacio: 0.6
   puntoDeInvocacion: {fileID: 1773378362}
   tiempoEntreMovimientos: 1
-  maximoX: 1.75
+  maximoX: 1.2
   prefabBalaEnemigo: {fileID: 5214659332545236875, guid: d66b85af70bda974fa4436513435e6ed, type: 3}
-  tiempoEntreDisparos: 0.01
+  tiempoEntreDisparos: 5
 --- !u!4 &558410234
 Transform:
   m_ObjectHideFlags: 0
@@ -1311,7 +1315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3184175061214824879, guid: 551c7a648b91359458d03c84e33b27b8, type: 3}
       propertyPath: tiempoDisparo
-      value: 0.1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4077677741272890074, guid: 551c7a648b91359458d03c84e33b27b8, type: 3}
       propertyPath: m_Name

@@ -4,15 +4,9 @@ using UnityEngine;
 
 using UnityEngine.SceneManagement; 
 
-
-
-
-
 public class controlJuego : MonoBehaviour
 
 {
-
-    
 
     public static controlJuego Instancia { get; private set; }
     [Header("Configuración de Escenas")]
@@ -112,15 +106,8 @@ public class controlJuego : MonoBehaviour
     private void FinDelJuego(bool victoria)
 
     {
-        Debug.Log(victoria ? "¡VICTORIA!" : "¡JUEGO TERMINADO! (Game Over)");
         Time.timeScale = 0f;
-        PlayerPrefs.SetFloat("TiempoFinal", tiempoTranscurrido);
-        PlayerPrefs.SetInt("CondicionFinal", victoria ? 1 : 0); 
-        PlayerPrefs.SetInt("PuntuacionFinal", puntos);
-        PlayerPrefs.Save();
-       
         SceneManager.LoadScene(nombreEscenaFinal);
-
     }
 
 }
