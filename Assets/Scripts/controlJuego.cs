@@ -56,7 +56,7 @@ public class controlJuego : MonoBehaviour
         jugadorActual = GameObject.FindGameObjectWithTag("Jugador");
         if (jugadorActual == null)
         {
-            Debug.LogError("ERROR: No se encontró el Jugador con el tag 'jugador'. Verifica el tag y el nombre.");
+            Debug.LogError("ERROR: No se encontró el Jugador con el tag 'Jugador'. Verifica el tag y el nombre.");
         }
     }
     void Update()

@@ -429,7 +429,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -1.589, y: 8.13, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -173, y: -22}
+  m_AnchoredPosition: {x: -161, y: -15}
   m_SizeDelta: {x: 201.155, y: 41.338}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &498733724
@@ -517,7 +517,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -167.92773, y: -230.90027, z: 0, w: 217.81009}
+  m_margin: {x: -167.92773, y: -230.90027, z: 213.0333, w: 217.81009}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -725,7 +725,7 @@ MonoBehaviour:
   tiempoEntreMovimientos: 1
   maximoX: 1.75
   prefabBalaEnemigo: {fileID: 5214659332545236875, guid: d66b85af70bda974fa4436513435e6ed, type: 3}
-  tiempoEntreDisparos: 10
+  tiempoEntreDisparos: 0.01
 --- !u!4 &558410234
 Transform:
   m_ObjectHideFlags: 0
@@ -1308,6 +1308,10 @@ PrefabInstance:
     - target: {fileID: 3184175061214824879, guid: 551c7a648b91359458d03c84e33b27b8, type: 3}
       propertyPath: limiteDerecho
       value: 15.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 3184175061214824879, guid: 551c7a648b91359458d03c84e33b27b8, type: 3}
+      propertyPath: tiempoDisparo
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4077677741272890074, guid: 551c7a648b91359458d03c84e33b27b8, type: 3}
       propertyPath: m_Name
