@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class controlJugador : MonoBehaviour
 {
@@ -39,5 +39,12 @@ public class controlJugador : MonoBehaviour
         }
 
         
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("BalaEnemiga"))
+        {
+            Destroy(other.gameObject); // Destruye la bala
+        }
     }
 }

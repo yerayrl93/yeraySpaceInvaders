@@ -1,47 +1,80 @@
-//
-using TMPro;
+ï»¿using TMPro;
+
 using UnityEngine;
-using UnityEngine.SceneManagement; // Necesario para reiniciar la escena
+
+using UnityEngine.SceneManagement; 
+
+
+
 
 
 public class controlJuego : MonoBehaviour
+
 {
-    // Patrón SINGLETON: Permite acceder a esta instancia desde cualquier otro script.
+
+    
+
     public static controlJuego Instancia { get; private set; }
+    [Header("ConfiguraciÃ³n de Escenas")]
+    [SerializeField] private string nombreEscenaFinal = "Final03";
 
     [Header("Estado del Juego")]
     [SerializeField]
     private int puntos = 0;
     [SerializeField]
     private int vidas = 3;
-
-    // Propiedades de solo lectura para acceder desde otros scripts (ej. UI)
+    [SerializeField]
+    private int enemigosRestantes;
+    private GameObject jugadorActual;
     public int Puntos => puntos;
     public int Vidas => vidas;
     [SerializeField] private TextMeshProUGUI textoPuntuacion;
-    // Inicialización del Singleton
+    private float tiempoTranscurrido = 0f;
+    [SerializeField] private TextMeshProUGUI textoCronometro;
+
+
     private void Awake()
+
     {
         if (Instancia != null && Instancia != this)
         {
-            // Si ya existe otra instancia, destrúyete.
             Destroy(gameObject);
         }
         else
         {
-            // Establece esta como la única instancia
             Instancia = this;
-            // Mantiene el controlador vivo al cambiar de escena (si es necesario)
             DontDestroyOnLoad(gameObject);
         }
+
     }
 
     void Start()
-    {
-        Time.timeScale = 1f;
-    }
 
-    // --- Métodos de Puntuación ---
+    {
+
+        Time.timeScale = 1f;
+        jugadorActual = GameObject.FindGameObjectWithTag("Jugador");
+        if (jugadorActual == null)
+        {
+            Debug.LogError("ERROR: No se encontrÃ³ el Jugador con el tag 'jugador'. Verifica el tag y el nombre.");
+        }
+    }
+    void Update()
+    {
+        
+        if (Time.timeScale > 0)
+        {
+            tiempoTranscurrido += Time.deltaTime;
+
+            if (textoCronometro != null)
+            {
+               
+                int minutos = Mathf.FloorToInt(tiempoTranscurrido / 60F);
+                int segundos = Mathf.FloorToInt(tiempoTranscurrido % 60F); 
+                textoCronometro.text = string.Format("{0:00}:{1:00}", minutos, segundos);
+            }
+        }
+    }
     public void SumarPuntos(int cantidad)
     {
         puntos += cantidad;
@@ -49,28 +82,45 @@ public class controlJuego : MonoBehaviour
         {
             textoPuntuacion.text = "SCORE: " + puntos;
         }
-        Debug.Log("Puntuación actual: " + puntos);
-        // * Aquí iría la lógica para actualizar un texto en la interfaz de usuario (UI) *
     }
+    public void EnemigoDestruido()
 
-    // --- Métodos de Vida ---
+    {
+        enemigosRestantes--;
+        if (enemigosRestantes <= 0)
+        {
+            FinDelJuego(true);
+        }
+    }
     public void PerderVida()
+
     {
         vidas--;
         Debug.Log("Vidas restantes: " + vidas);
-
         if (vidas <= 0)
         {
-            FinDelJuego();
+       
+            if (jugadorActual != null)
+            {
+               
+                Destroy(jugadorActual);
+            }
+
+            FinDelJuego(false); 
         }
-        // * Aquí iría la lógica para actualizar el contador o iconos de vida en la UI *
+    }
+    private void FinDelJuego(bool victoria)
+
+    {
+        Debug.Log(victoria ? "Â¡VICTORIA!" : "Â¡JUEGO TERMINADO! (Game Over)");
+        Time.timeScale = 0f;
+        PlayerPrefs.SetFloat("TiempoFinal", tiempoTranscurrido);
+        PlayerPrefs.SetInt("CondicionFinal", victoria ? 1 : 0); 
+        PlayerPrefs.SetInt("PuntuacionFinal", puntos);
+        PlayerPrefs.Save();
+       
+        SceneManager.LoadScene(nombreEscenaFinal);
+
     }
 
-    private void FinDelJuego()
-    {
-        Debug.Log("¡JUEGO TERMINADO!");
-        // Aquí puedes implementar lo que sucede al morir:
-        // Por ejemplo, cargar una escena de "Game Over" o reiniciar el nivel.
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
-    }
 }

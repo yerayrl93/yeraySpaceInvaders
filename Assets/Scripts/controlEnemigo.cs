@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class controlEnemigo : MonoBehaviour
 {
@@ -71,7 +71,12 @@ public class controlEnemigo : MonoBehaviour
                     enemigo.transform.position = posicionActual;
                     enemigo.transform.localScale = new Vector3(2f, 2f, 0f);
                     enemigo.transform.SetParent(escuadron.transform);
-
+                    // Dentro del loop de invocaciÃ³n en controlEnemigo.cs:
+                    // ...
+                    enemigo.transform.SetParent(escuadron.transform);
+                    // AÃ±adir el script de vida al enemigo
+                    enemigo.AddComponent<vidaEnemigo>(); // <--- Â¡AÃ±adir esta lÃ­nea!
+                                                         // ...
                     SpriteRenderer imagen = enemigo.AddComponent<SpriteRenderer>();
                     imagen.sprite = tipoEnemigo.imagen[y % tipoEnemigo.imagen.Length];
                     imagen.sortingLayerName = "Default";
@@ -120,14 +125,14 @@ public class controlEnemigo : MonoBehaviour
             }
             else 
             {
-                posicionActualX -= xEspacio; //movemos el límite un paso
+                posicionActualX -= xEspacio;
                 if (posicionActualX > minX)
                 {
-                    Mover(-xEspacio, 0); //si no toca el límite, movemos la flota un paso (-xEspacio)
+                    Mover(-xEspacio, 0); 
                 }
                 else
                 {
-                    CambioDireccion(); //si toca el límite, cambiamos de dirección y bajamos
+                    CambioDireccion(); 
                 }
             }
         }
@@ -135,7 +140,7 @@ public class controlEnemigo : MonoBehaviour
         if (temporizadorDisparo >= tiempoEntreDisparos)
         {
             temporizadorDisparo = 0f;
-            DispararAleatorio(); // ¡Llamada a la función de disparo!
+            DispararAleatorio(); // Â¡Llamada a la funciÃ³n de disparo!
         }
     }
     private void DispararAleatorio()
@@ -184,7 +189,13 @@ public class controlEnemigo : MonoBehaviour
             
                 if (posEnemigos[i, j] == enemigoDestruido)
                 {
-                    posEnemigos[i, j] = null; 
+                    posEnemigos[i, j] = null;
+        
+                    if (controlJuego.Instancia != null)
+                    {
+                        controlJuego.Instancia.EnemigoDestruido();
+                      
+                    }
                     return;
                 }
             }

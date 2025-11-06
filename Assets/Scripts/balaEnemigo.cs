@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class balaEnemigo : MonoBehaviour
 {
@@ -26,13 +26,22 @@ public class balaEnemigo : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       
+        // El cuerpo del Jugador debe tener un Collider2D y el Tag "Jugador".
         if (collision.CompareTag("Jugador"))
         {
-            Destroy(collision.gameObject);
+            // 🛑 ¡CRUCIAL! Notificar el golpe al Singleton
+            if (controlJuego.Instancia != null)
+            {
+                controlJuego.Instancia.PerderVida();
+            }
+
+            // ❌ ELIMINAR ESTA LÍNEA: Destroy(collision.gameObject);
+            // Esto destruye al jugador, sin importar sus vidas.
+
+            // Destruir la bala (gameObject), que es lo correcto para que desaparezca
             Destroy(gameObject);
         }
 
-      
+        // 💡 NOTA: Puedes añadir aquí más lógica para colisiones con límites, etc.
     }
 }
