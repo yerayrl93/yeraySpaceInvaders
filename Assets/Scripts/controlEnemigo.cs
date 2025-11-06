@@ -1,12 +1,11 @@
 using UnityEngine;
-using UnityEngine.XR;
 
 public class controlEnemigo : MonoBehaviour
 {
     // en este script cremaos el blocke de enemigos en estructura
     //usamos serializable para que sea visible en el inspector 
     [System.Serializable]
-    private struct tipoEnemigo
+    public struct tipoEnemigo
     {
         public string nombre;
         public Sprite[] imagen;
@@ -46,6 +45,8 @@ public class controlEnemigo : MonoBehaviour
     {
         minX = puntoDeInvocacion.position.x;
         GameObject escuadron = new GameObject { name = "Escuadron" };
+       
+
         Vector2 posicionActual = puntoDeInvocacion.position;
 
 
@@ -73,7 +74,8 @@ public class controlEnemigo : MonoBehaviour
 
                     SpriteRenderer imagen = enemigo.AddComponent<SpriteRenderer>();
                     imagen.sprite = tipoEnemigo.imagen[y % tipoEnemigo.imagen.Length];
-
+                    imagen.sortingLayerName = "Default";
+                    imagen.sortingOrder = 10;
                     enemigo.tag = "Enemigo";
                     posEnemigos[filasTotales, y] = enemigo.transform;
                     posicionActual.x += xEspacio;

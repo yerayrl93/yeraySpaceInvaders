@@ -1,3 +1,4 @@
+//
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement; // Necesario para reiniciar la escena
@@ -33,6 +34,11 @@ public class controlJuego : MonoBehaviour
             // Mantiene el controlador vivo al cambiar de escena (si es necesario)
             DontDestroyOnLoad(gameObject);
         }
+    }
+
+    void Start()
+    {
+        Time.timeScale = 1f;
     }
 
     // --- Métodos de Puntuación ---
