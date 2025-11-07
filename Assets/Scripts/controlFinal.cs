@@ -7,7 +7,7 @@ public class ControladorFinal : MonoBehaviour
     // Asigna estos TextMeshProUGUI desde el Inspector de Unity
     [SerializeField] private TextMeshProUGUI textoResultado;
     [SerializeField] private TextMeshProUGUI textoPuntuacionFinal;
-    [SerializeField] private TextMeshProUGUI textoTiempoFinal;
+    
     private const string escenaJuego = "Juego02";
     private const string escenaInicio = "Inicio1";
     void Start()
@@ -33,10 +33,6 @@ public class ControladorFinal : MonoBehaviour
         // 3. Mostrar la puntuación final
         textoPuntuacionFinal.text = "SCORE: " + puntuacion;
 
-        int minutos = Mathf.FloorToInt(tiempo / 60F);
-        int segundos = Mathf.FloorToInt(tiempo % 60F);
-
-        textoTiempoFinal.text = string.Format("{0:00}:{1:00}", minutos, segundos);
     }
     public void JugarDeNuevo()
     {
