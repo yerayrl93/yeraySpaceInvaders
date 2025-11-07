@@ -729,7 +729,7 @@ MonoBehaviour:
   tiempoEntreMovimientos: 1
   maximoX: 1.2
   prefabBalaEnemigo: {fileID: 5214659332545236875, guid: d66b85af70bda974fa4436513435e6ed, type: 3}
-  tiempoEntreDisparos: 5
+  tiempoEntreDisparos: 0.01
 --- !u!4 &558410234
 Transform:
   m_ObjectHideFlags: 0
@@ -1315,7 +1315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3184175061214824879, guid: 551c7a648b91359458d03c84e33b27b8, type: 3}
       propertyPath: tiempoDisparo
-      value: 0.7
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4077677741272890074, guid: 551c7a648b91359458d03c84e33b27b8, type: 3}
       propertyPath: m_Name
